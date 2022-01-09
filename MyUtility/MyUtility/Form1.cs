@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace MyUtility
 {
     public partial class MainForm : Form
     {
-        private int count = 0;
+        private int _count;
+        private readonly Random _random = new Random();
 
         public MainForm()
         {
@@ -30,20 +29,38 @@ namespace MyUtility
 
         private void btnPlus_Click(object sender, EventArgs e)
         {
-            count++;
-            lblCount.Text = count.ToString();
+            _count++;
+            lblCount.Text = _count.ToString();
         }
 
         private void btnMinus_Click(object sender, EventArgs e)
         {
-            count--;
-            lblCount.Text = count.ToString();
+            _count--;
+            lblCount.Text = _count.ToString();
         }
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            count = 0;
-            lblCount.Text = count.ToString();
+            _count = 0;
+            lblCount.Text = _count.ToString();
+        }
+
+        private void btnRandom_Click(object sender, EventArgs e)
+        {
+            int number = _random.Next(Convert.ToInt32(numericUpDown1.Value), Convert.ToInt32(numericUpDown2.Value) + 1);
+            lblRandom.Text = number.ToString();
+
+            tbRandom.AppendText(number + "\r\n"); // сгенерированные числа записать в textBox
+        }
+
+        private void btnRandomClear_Click(object sender, EventArgs e)
+        {
+            tbRandom.Clear();
+        }
+
+        private void btnRandomCopy_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(tbRandom.Text);
         }
     }
 }
