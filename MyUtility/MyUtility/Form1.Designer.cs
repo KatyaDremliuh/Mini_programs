@@ -36,6 +36,7 @@ namespace MyUtility
             this.tsmiAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnRandomCopy = new System.Windows.Forms.Button();
             this.btnRandomClear = new System.Windows.Forms.Button();
             this.tbRandom = new System.Windows.Forms.TextBox();
             this.lblTo = new System.Windows.Forms.Label();
@@ -49,7 +50,7 @@ namespace MyUtility
             this.btnMinus = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
             this.btnPlus = new System.Windows.Forms.Button();
-            this.btnRandomCopy = new System.Windows.Forms.Button();
+            this.cbRandom = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -116,6 +117,7 @@ namespace MyUtility
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.tabPage2.Controls.Add(this.cbRandom);
             this.tabPage2.Controls.Add(this.btnRandomCopy);
             this.tabPage2.Controls.Add(this.btnRandomClear);
             this.tabPage2.Controls.Add(this.tbRandom);
@@ -132,10 +134,21 @@ namespace MyUtility
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Генератор случайных чисел";
             // 
+            // btnRandomCopy
+            // 
+            this.btnRandomCopy.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnRandomCopy.Location = new System.Drawing.Point(33, 162);
+            this.btnRandomCopy.Name = "btnRandomCopy";
+            this.btnRandomCopy.Size = new System.Drawing.Size(189, 55);
+            this.btnRandomCopy.TabIndex = 8;
+            this.btnRandomCopy.Text = "Копировать";
+            this.btnRandomCopy.UseVisualStyleBackColor = true;
+            this.btnRandomCopy.Click += new System.EventHandler(this.btnRandomCopy_Click);
+            // 
             // btnRandomClear
             // 
             this.btnRandomClear.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnRandomClear.Location = new System.Drawing.Point(33, 317);
+            this.btnRandomClear.Location = new System.Drawing.Point(33, 226);
             this.btnRandomClear.Name = "btnRandomClear";
             this.btnRandomClear.Size = new System.Drawing.Size(189, 55);
             this.btnRandomClear.TabIndex = 7;
@@ -157,7 +170,7 @@ namespace MyUtility
             // 
             this.lblTo.AutoSize = true;
             this.lblTo.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblTo.Location = new System.Drawing.Point(33, 164);
+            this.lblTo.Location = new System.Drawing.Point(33, 99);
             this.lblTo.Name = "lblTo";
             this.lblTo.Size = new System.Drawing.Size(56, 38);
             this.lblTo.TabIndex = 5;
@@ -176,7 +189,7 @@ namespace MyUtility
             // numericUpDown2
             // 
             this.numericUpDown2.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.numericUpDown2.Location = new System.Drawing.Point(145, 166);
+            this.numericUpDown2.Location = new System.Drawing.Point(145, 101);
             this.numericUpDown2.Name = "numericUpDown2";
             this.numericUpDown2.Size = new System.Drawing.Size(77, 43);
             this.numericUpDown2.TabIndex = 3;
@@ -203,7 +216,7 @@ namespace MyUtility
             // 
             this.lblRandom.AutoSize = true;
             this.lblRandom.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblRandom.Location = new System.Drawing.Point(341, 171);
+            this.lblRandom.Location = new System.Drawing.Point(341, 106);
             this.lblRandom.Name = "lblRandom";
             this.lblRandom.Size = new System.Drawing.Size(33, 38);
             this.lblRandom.TabIndex = 1;
@@ -277,16 +290,15 @@ namespace MyUtility
             this.btnPlus.UseVisualStyleBackColor = true;
             this.btnPlus.Click += new System.EventHandler(this.btnPlus_Click);
             // 
-            // btnRandomCopy
+            // cbRandom
             // 
-            this.btnRandomCopy.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnRandomCopy.Location = new System.Drawing.Point(33, 226);
-            this.btnRandomCopy.Name = "btnRandomCopy";
-            this.btnRandomCopy.Size = new System.Drawing.Size(189, 55);
-            this.btnRandomCopy.TabIndex = 8;
-            this.btnRandomCopy.Text = "Копировать";
-            this.btnRandomCopy.UseVisualStyleBackColor = true;
-            this.btnRandomCopy.Click += new System.EventHandler(this.btnRandomCopy_Click);
+            this.cbRandom.AutoSize = true;
+            this.cbRandom.Location = new System.Drawing.Point(33, 298);
+            this.cbRandom.Name = "cbRandom";
+            this.cbRandom.Size = new System.Drawing.Size(191, 32);
+            this.cbRandom.TabIndex = 9;
+            this.cbRandom.Text = "без повторений";
+            this.cbRandom.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -338,6 +350,7 @@ namespace MyUtility
         private System.Windows.Forms.TextBox tbRandom;
         private System.Windows.Forms.Button btnRandomClear;
         private System.Windows.Forms.Button btnRandomCopy;
+        private System.Windows.Forms.CheckBox cbRandom;
     }
 }
 

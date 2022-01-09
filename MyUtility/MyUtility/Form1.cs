@@ -6,7 +6,7 @@ namespace MyUtility
     public partial class MainForm : Form
     {
         private int _count;
-        private readonly Random _random = new Random();
+        private readonly Random _random = new();
 
         public MainForm()
         {
@@ -50,7 +50,20 @@ namespace MyUtility
             int number = _random.Next(Convert.ToInt32(numericUpDown1.Value), Convert.ToInt32(numericUpDown2.Value) + 1);
             lblRandom.Text = number.ToString();
 
-            tbRandom.AppendText(number + "\r\n"); // сгенерированные числа записать в textBox
+            // добавлять сгенерированные числа без повторок
+
+            if (cbRandom.Checked)
+            {
+                if (tbRandom.Text.IndexOf(number.ToString(), StringComparison.Ordinal) == -1)
+                {
+                    tbRandom.AppendText(number + "\r\n"); // сгенерированные числа записать в textBox
+                }
+            }
+            else
+            {
+                // или с повторками
+                tbRandom.AppendText(number + "\r\n"); // сгенерированные числа записать в textBox
+            }
         }
 
         private void btnRandomClear_Click(object sender, EventArgs e)
