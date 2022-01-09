@@ -54,14 +54,26 @@ namespace MyUtility
 
             if (cbRandom.Checked)
             {
-                if (tbRandom.Text.IndexOf(number.ToString(), StringComparison.Ordinal) == -1)
+                int i = 0;
+
+                while (tbRandom.Text.IndexOf(number.ToString(), StringComparison.Ordinal) != -1)
+                {
+                    number = _random.Next(Convert.ToInt32(numericUpDown1.Value), Convert.ToInt32(numericUpDown2.Value) + 1);
+                    i++;
+
+                    if (i > 1000)
+                    {
+                        break;
+                    }
+                }
+
+                if (i <= 1000)
                 {
                     tbRandom.AppendText(number + "\r\n"); // сгенерированные числа записать в textBox
                 }
             }
-            else
+            else // или с повторками
             {
-                // или с повторками
                 tbRandom.AppendText(number + "\r\n"); // сгенерированные числа записать в textBox
             }
         }
