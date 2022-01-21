@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 using System.Windows.Forms;
 
 namespace MyUtility
@@ -6,12 +8,30 @@ namespace MyUtility
     public partial class MainForm : Form
     {
         private int _count;
-        private readonly Random _random = new();
-        private char[] specialChars = new char[] { '%', '*', ')', '#', '$', '^', '&', '~' };
+        private readonly Random random;
+        private readonly char[] _specialChars = new char[] { '%', '*', ')', '#', '$', '^', '&', '~' };
+        private Dictionary<string, double> metrica;
+
+        private const double Millimetre = 1;
+        private const double MillimetresAt1Centimetre = 10;
+        private const double DecimetresAt1Centimetre = 100;
+        private const double MetresAt1Centimetre = 1000;
+        private const double KilometresAt1Centimetre = 1000000;
+        private const double MilesAt1Centimetre = 1609344;
 
         public MainForm()
         {
             InitializeComponent();
+
+            random = new Random();
+
+            metrica = new Dictionary<string, double>();
+            metrica.Add("mm", Millimetre);
+            metrica.Add("cm", MillimetresAt1Centimetre);
+            metrica.Add("dm", DecimetresAt1Centimetre);
+            metrica.Add("m", MetresAt1Centimetre);
+            metrica.Add("km", KilometresAt1Centimetre);
+            metrica.Add("mile", MilesAt1Centimetre);
         }
 
         private void tsmiExit_Click(object sender, EventArgs e)
@@ -48,7 +68,7 @@ namespace MyUtility
 
         private void btnRandom_Click(object sender, EventArgs e)
         {
-            int number = _random.Next(Convert.ToInt32(numericUpDown1.Value), Convert.ToInt32(numericUpDown2.Value) + 1);
+            int number = random.Next(Convert.ToInt32(numericUpDown1.Value), Convert.ToInt32(numericUpDown2.Value) + 1);
             lblRandom.Text = number.ToString();
 
             // добавлять сгенерированные числа без повторок
@@ -59,7 +79,7 @@ namespace MyUtility
 
                 while (tbRandom.Text.IndexOf(number.ToString(), StringComparison.Ordinal) != -1)
                 {
-                    number = _random.Next(Convert.ToInt32(numericUpDown1.Value), Convert.ToInt32(numericUpDown2.Value) + 1);
+                    number = random.Next(Convert.ToInt32(numericUpDown1.Value), Convert.ToInt32(numericUpDown2.Value) + 1);
                     i++;
 
                     if (i > 1000)
@@ -107,7 +127,7 @@ namespace MyUtility
             }
             catch
             {
-                MessageBox.Show("Ошибка при попытке сохранения");
+                MessageBox.Show(@"Ошибка при попытке сохранения");
             }
         }
 
@@ -119,7 +139,7 @@ namespace MyUtility
             }
             catch
             {
-                MessageBox.Show("Ошибка при загрузке");
+                MessageBox.Show(@"Ошибка при загрузке");
             }
         }
 
@@ -144,35 +164,40 @@ namespace MyUtility
             }
             else
             {
-                string password = string.Empty;
+                StringBuilder password = new StringBuilder();
 
                 for (int i = 0; i < nudPasswordLength.Value; i++)
                 {
-                    int element = _random.Next(0, clbPassword.CheckedItems.Count);
+                    int element = random.Next(0, clbPassword.CheckedItems.Count);
                     string stringElement = clbPassword.CheckedItems[element].ToString();
 
                     switch (stringElement)
                     {
                         case "Цифры":
-                            password += _random.Next(10).ToString();
+                            password.Append(random.Next(10).ToString());
                             break;
                         case "Прописные буквы":
-                            password += Convert.ToChar(_random.Next(65, 88));
+                            password.Append(Convert.ToChar(random.Next(65, 88)));
                             break;
                         case "Строчные буквы":
-                            password += Convert.ToChar(_random.Next(97, 122));
+                            password.Append(Convert.ToChar(random.Next(97, 122)));
                             break;
                         default:
-                            password += specialChars[_random.Next(specialChars.Length)];
+                            password.Append(_specialChars[random.Next(_specialChars.Length)]);
                             break;
                     }
                 }
 
-                tbGeneratedPassword.Text = password;
+                tbGeneratedPassword.Text = password.ToString();
 
                 // скопировать в буфер обмена
-                Clipboard.SetText(password);
+                Clipboard.SetText(password.ToString());
             }
+        }
+
+        private void btnConvert_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

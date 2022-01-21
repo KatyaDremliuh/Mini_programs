@@ -41,6 +41,12 @@ namespace MyUtility
             this.tsmiSave = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiLoad = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.tbTo = new System.Windows.Forms.TextBox();
+            this.tbFrom = new System.Windows.Forms.TextBox();
+            this.btnConvert = new System.Windows.Forms.Button();
+            this.cbTo = new System.Windows.Forms.ComboBox();
+            this.cbFrom = new System.Windows.Forms.ComboBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tbGeneratedPassword = new System.Windows.Forms.TextBox();
             this.btnCreatePassword = new System.Windows.Forms.Button();
@@ -67,6 +73,7 @@ namespace MyUtility
             this.btnRandom = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            this.tabPage5.SuspendLayout();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudPasswordLength)).BeginInit();
             this.tabPage1.SuspendLayout();
@@ -85,7 +92,7 @@ namespace MyUtility
             this.блокнотToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(786, 36);
+            this.menuStrip1.Size = new System.Drawing.Size(922, 36);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -180,6 +187,7 @@ namespace MyUtility
             // 
             // tabControl1
             // 
+            this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage3);
@@ -188,8 +196,73 @@ namespace MyUtility
             this.tabControl1.Location = new System.Drawing.Point(0, 36);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(786, 427);
+            this.tabControl1.Size = new System.Drawing.Size(922, 427);
             this.tabControl1.TabIndex = 1;
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.tabPage5.Controls.Add(this.tbTo);
+            this.tabPage5.Controls.Add(this.tbFrom);
+            this.tabPage5.Controls.Add(this.btnConvert);
+            this.tabPage5.Controls.Add(this.cbTo);
+            this.tabPage5.Controls.Add(this.cbFrom);
+            this.tabPage5.Location = new System.Drawing.Point(4, 37);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(914, 386);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "Конвертер";
+            // 
+            // tbTo
+            // 
+            this.tbTo.Location = new System.Drawing.Point(609, 187);
+            this.tbTo.Name = "tbTo";
+            this.tbTo.ReadOnly = true;
+            this.tbTo.Size = new System.Drawing.Size(257, 34);
+            this.tbTo.TabIndex = 4;
+            // 
+            // tbFrom
+            // 
+            this.tbFrom.Location = new System.Drawing.Point(42, 187);
+            this.tbFrom.Name = "tbFrom";
+            this.tbFrom.Size = new System.Drawing.Size(257, 34);
+            this.tbFrom.TabIndex = 3;
+            this.tbFrom.Text = "1";
+            // 
+            // btnConvert
+            // 
+            this.btnConvert.Location = new System.Drawing.Point(357, 47);
+            this.btnConvert.Name = "btnConvert";
+            this.btnConvert.Size = new System.Drawing.Size(201, 51);
+            this.btnConvert.TabIndex = 2;
+            this.btnConvert.Text = "Конвертировать";
+            this.btnConvert.UseVisualStyleBackColor = true;
+            this.btnConvert.Click += new System.EventHandler(this.btnConvert_Click);
+            // 
+            // cbTo
+            // 
+            this.cbTo.FormattingEnabled = true;
+            this.cbTo.Location = new System.Drawing.Point(609, 47);
+            this.cbTo.Name = "cbTo";
+            this.cbTo.Size = new System.Drawing.Size(257, 36);
+            this.cbTo.TabIndex = 1;
+            this.cbTo.Text = "mm";
+            // 
+            // cbFrom
+            // 
+            this.cbFrom.FormattingEnabled = true;
+            this.cbFrom.Items.AddRange(new object[] {
+            "mm",
+            "cm",
+            "dm",
+            "m",
+            "km",
+            "mile"});
+            this.cbFrom.Location = new System.Drawing.Point(42, 47);
+            this.cbFrom.Name = "cbFrom";
+            this.cbFrom.Size = new System.Drawing.Size(257, 36);
+            this.cbFrom.TabIndex = 0;
+            this.cbFrom.Text = "mm";
             // 
             // tabPage4
             // 
@@ -202,7 +275,7 @@ namespace MyUtility
             this.tabPage4.Location = new System.Drawing.Point(4, 37);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(778, 386);
+            this.tabPage4.Size = new System.Drawing.Size(914, 386);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Генератор паролей";
             // 
@@ -283,7 +356,7 @@ namespace MyUtility
             this.tabPage1.Location = new System.Drawing.Point(4, 37);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(778, 386);
+            this.tabPage1.Size = new System.Drawing.Size(914, 386);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Счётчик";
             // 
@@ -335,7 +408,7 @@ namespace MyUtility
             this.tabPage3.Controls.Add(this.rtbNotepad);
             this.tabPage3.Location = new System.Drawing.Point(4, 37);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(778, 386);
+            this.tabPage3.Size = new System.Drawing.Size(914, 386);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Блокнот";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -346,7 +419,7 @@ namespace MyUtility
             this.rtbNotepad.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rtbNotepad.Location = new System.Drawing.Point(0, 0);
             this.rtbNotepad.Name = "rtbNotepad";
-            this.rtbNotepad.Size = new System.Drawing.Size(778, 386);
+            this.rtbNotepad.Size = new System.Drawing.Size(914, 386);
             this.rtbNotepad.TabIndex = 0;
             this.rtbNotepad.Text = "";
             // 
@@ -366,7 +439,7 @@ namespace MyUtility
             this.tabPage2.Location = new System.Drawing.Point(4, 37);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(778, 386);
+            this.tabPage2.Size = new System.Drawing.Size(914, 386);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Генератор случайных чисел";
             // 
@@ -484,7 +557,7 @@ namespace MyUtility
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.ClientSize = new System.Drawing.Size(786, 463);
+            this.ClientSize = new System.Drawing.Size(922, 463);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -496,6 +569,8 @@ namespace MyUtility
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
+            this.tabPage5.ResumeLayout(false);
+            this.tabPage5.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudPasswordLength)).EndInit();
@@ -549,6 +624,12 @@ namespace MyUtility
         private System.Windows.Forms.Button btnCreatePassword;
         private System.Windows.Forms.Label lblPasswordLength;
         private System.Windows.Forms.NumericUpDown nudPasswordLength;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.TextBox tbTo;
+        private System.Windows.Forms.TextBox tbFrom;
+        private System.Windows.Forms.Button btnConvert;
+        private System.Windows.Forms.ComboBox cbTo;
+        private System.Windows.Forms.ComboBox cbFrom;
     }
 }
 
