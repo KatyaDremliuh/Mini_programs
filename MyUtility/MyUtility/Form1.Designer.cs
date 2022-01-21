@@ -41,6 +41,17 @@ namespace MyUtility
             this.tsmiSave = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiLoad = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.tbGeneratedPassword = new System.Windows.Forms.TextBox();
+            this.btnCreatePassword = new System.Windows.Forms.Button();
+            this.lblPasswordLength = new System.Windows.Forms.Label();
+            this.nudPasswordLength = new System.Windows.Forms.NumericUpDown();
+            this.clbPassword = new System.Windows.Forms.CheckedListBox();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.lblCount = new System.Windows.Forms.Label();
+            this.btnMinus = new System.Windows.Forms.Button();
+            this.btnReset = new System.Windows.Forms.Button();
+            this.btnPlus = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.rtbNotepad = new System.Windows.Forms.RichTextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -54,18 +65,15 @@ namespace MyUtility
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.lblRandom = new System.Windows.Forms.Label();
             this.btnRandom = new System.Windows.Forms.Button();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.lblCount = new System.Windows.Forms.Label();
-            this.btnMinus = new System.Windows.Forms.Button();
-            this.btnReset = new System.Windows.Forms.Button();
-            this.btnPlus = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPasswordLength)).BeginInit();
+            this.tabPage1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            this.tabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -172,15 +180,155 @@ namespace MyUtility
             // 
             // tabControl1
             // 
+            this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 36);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(786, 427);
             this.tabControl1.TabIndex = 1;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.BackColor = System.Drawing.Color.LightCoral;
+            this.tabPage4.Controls.Add(this.tbGeneratedPassword);
+            this.tabPage4.Controls.Add(this.btnCreatePassword);
+            this.tabPage4.Controls.Add(this.lblPasswordLength);
+            this.tabPage4.Controls.Add(this.nudPasswordLength);
+            this.tabPage4.Controls.Add(this.clbPassword);
+            this.tabPage4.Location = new System.Drawing.Point(4, 37);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(778, 386);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Генератор паролей";
+            // 
+            // tbGeneratedPassword
+            // 
+            this.tbGeneratedPassword.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.tbGeneratedPassword.Location = new System.Drawing.Point(22, 326);
+            this.tbGeneratedPassword.Name = "tbGeneratedPassword";
+            this.tbGeneratedPassword.Size = new System.Drawing.Size(472, 43);
+            this.tbGeneratedPassword.TabIndex = 4;
+            // 
+            // btnCreatePassword
+            // 
+            this.btnCreatePassword.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnCreatePassword.Location = new System.Drawing.Point(22, 255);
+            this.btnCreatePassword.Name = "btnCreatePassword";
+            this.btnCreatePassword.Size = new System.Drawing.Size(245, 48);
+            this.btnCreatePassword.TabIndex = 3;
+            this.btnCreatePassword.Text = "Создать пароль";
+            this.btnCreatePassword.UseVisualStyleBackColor = true;
+            this.btnCreatePassword.Click += new System.EventHandler(this.btnCreatePassword_Click);
+            // 
+            // lblPasswordLength
+            // 
+            this.lblPasswordLength.AutoSize = true;
+            this.lblPasswordLength.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblPasswordLength.Location = new System.Drawing.Point(22, 191);
+            this.lblPasswordLength.Name = "lblPasswordLength";
+            this.lblPasswordLength.Size = new System.Drawing.Size(213, 38);
+            this.lblPasswordLength.TabIndex = 2;
+            this.lblPasswordLength.Text = "Длина пароля";
+            // 
+            // nudPasswordLength
+            // 
+            this.nudPasswordLength.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.nudPasswordLength.Location = new System.Drawing.Point(274, 191);
+            this.nudPasswordLength.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.nudPasswordLength.Minimum = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            this.nudPasswordLength.Name = "nudPasswordLength";
+            this.nudPasswordLength.Size = new System.Drawing.Size(57, 43);
+            this.nudPasswordLength.TabIndex = 1;
+            this.nudPasswordLength.Value = new decimal(new int[] {
+            6,
+            0,
+            0,
+            0});
+            // 
+            // clbPassword
+            // 
+            this.clbPassword.CheckOnClick = true;
+            this.clbPassword.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.clbPassword.FormattingEnabled = true;
+            this.clbPassword.Items.AddRange(new object[] {
+            "Цифры",
+            "Прописные буквы",
+            "Строчные буквы",
+            "Спец. символы: %,*,),#,$,^,&,~"});
+            this.clbPassword.Location = new System.Drawing.Point(22, 18);
+            this.clbPassword.Name = "clbPassword";
+            this.clbPassword.Size = new System.Drawing.Size(472, 156);
+            this.clbPassword.TabIndex = 0;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.tabPage1.Controls.Add(this.lblCount);
+            this.tabPage1.Controls.Add(this.btnMinus);
+            this.tabPage1.Controls.Add(this.btnReset);
+            this.tabPage1.Controls.Add(this.btnPlus);
+            this.tabPage1.Location = new System.Drawing.Point(4, 37);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(778, 386);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Счётчик";
+            // 
+            // lblCount
+            // 
+            this.lblCount.AutoSize = true;
+            this.lblCount.Font = new System.Drawing.Font("Segoe UI", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblCount.Location = new System.Drawing.Point(356, 162);
+            this.lblCount.Name = "lblCount";
+            this.lblCount.Size = new System.Drawing.Size(43, 50);
+            this.lblCount.TabIndex = 3;
+            this.lblCount.Text = "0";
+            // 
+            // btnMinus
+            // 
+            this.btnMinus.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnMinus.Location = new System.Drawing.Point(321, 283);
+            this.btnMinus.Name = "btnMinus";
+            this.btnMinus.Size = new System.Drawing.Size(110, 60);
+            this.btnMinus.TabIndex = 2;
+            this.btnMinus.Text = "-";
+            this.btnMinus.UseVisualStyleBackColor = true;
+            this.btnMinus.Click += new System.EventHandler(this.btnMinus_Click);
+            // 
+            // btnReset
+            // 
+            this.btnReset.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnReset.Location = new System.Drawing.Point(536, 162);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(110, 60);
+            this.btnReset.TabIndex = 1;
+            this.btnReset.Text = "Сброс";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
+            // btnPlus
+            // 
+            this.btnPlus.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnPlus.Location = new System.Drawing.Point(321, 48);
+            this.btnPlus.Name = "btnPlus";
+            this.btnPlus.Size = new System.Drawing.Size(110, 60);
+            this.btnPlus.TabIndex = 0;
+            this.btnPlus.Text = "+";
+            this.btnPlus.UseVisualStyleBackColor = true;
+            this.btnPlus.Click += new System.EventHandler(this.btnPlus_Click);
             // 
             // tabPage3
             // 
@@ -331,63 +479,6 @@ namespace MyUtility
             this.btnRandom.UseVisualStyleBackColor = true;
             this.btnRandom.Click += new System.EventHandler(this.btnRandom_Click);
             // 
-            // tabPage1
-            // 
-            this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.tabPage1.Controls.Add(this.lblCount);
-            this.tabPage1.Controls.Add(this.btnMinus);
-            this.tabPage1.Controls.Add(this.btnReset);
-            this.tabPage1.Controls.Add(this.btnPlus);
-            this.tabPage1.Location = new System.Drawing.Point(4, 37);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(778, 386);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Счётчик";
-            // 
-            // lblCount
-            // 
-            this.lblCount.AutoSize = true;
-            this.lblCount.Font = new System.Drawing.Font("Segoe UI", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblCount.Location = new System.Drawing.Point(356, 162);
-            this.lblCount.Name = "lblCount";
-            this.lblCount.Size = new System.Drawing.Size(43, 50);
-            this.lblCount.TabIndex = 3;
-            this.lblCount.Text = "0";
-            // 
-            // btnMinus
-            // 
-            this.btnMinus.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnMinus.Location = new System.Drawing.Point(321, 283);
-            this.btnMinus.Name = "btnMinus";
-            this.btnMinus.Size = new System.Drawing.Size(110, 60);
-            this.btnMinus.TabIndex = 2;
-            this.btnMinus.Text = "-";
-            this.btnMinus.UseVisualStyleBackColor = true;
-            this.btnMinus.Click += new System.EventHandler(this.btnMinus_Click);
-            // 
-            // btnReset
-            // 
-            this.btnReset.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnReset.Location = new System.Drawing.Point(536, 162);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(110, 60);
-            this.btnReset.TabIndex = 1;
-            this.btnReset.Text = "Сброс";
-            this.btnReset.UseVisualStyleBackColor = true;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
-            // 
-            // btnPlus
-            // 
-            this.btnPlus.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnPlus.Location = new System.Drawing.Point(321, 48);
-            this.btnPlus.Name = "btnPlus";
-            this.btnPlus.Size = new System.Drawing.Size(110, 60);
-            this.btnPlus.TabIndex = 0;
-            this.btnPlus.Text = "+";
-            this.btnPlus.UseVisualStyleBackColor = true;
-            this.btnPlus.Click += new System.EventHandler(this.btnPlus_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 28F);
@@ -405,13 +496,16 @@ namespace MyUtility
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPasswordLength)).EndInit();
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -449,6 +543,12 @@ namespace MyUtility
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem tsmiSave;
         private System.Windows.Forms.ToolStripMenuItem tsmiLoad;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.CheckedListBox clbPassword;
+        private System.Windows.Forms.TextBox tbGeneratedPassword;
+        private System.Windows.Forms.Button btnCreatePassword;
+        private System.Windows.Forms.Label lblPasswordLength;
+        private System.Windows.Forms.NumericUpDown nudPasswordLength;
     }
 }
 

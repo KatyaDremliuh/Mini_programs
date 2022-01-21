@@ -7,6 +7,7 @@ namespace MyUtility
     {
         private int _count;
         private readonly Random _random = new();
+        private char[] specialChars = new char[] { '%', '*', ')', '#', '$', '^', '&', '~' };
 
         public MainForm()
         {
@@ -130,6 +131,48 @@ namespace MyUtility
         private void MainForm_Load(object sender, EventArgs e)
         {
             LoadNotepad();
+            clbPassword.SetItemChecked(0, true); // при загрузке формы будут выбраны сразу "цифры" для генератора паролей
+            clbPassword.SetItemChecked(0, true); // и "прописные буквы"
+        }
+
+        private void btnCreatePassword_Click(object sender, EventArgs e)
+        {
+            // если никакие чекбоксы не выбраны
+            if (clbPassword.CheckedItems.Count == 0)
+            {
+                return;
+            }
+            else
+            {
+                string password = string.Empty;
+
+                for (int i = 0; i < nudPasswordLength.Value; i++)
+                {
+                    int element = _random.Next(0, clbPassword.CheckedItems.Count);
+                    string stringElement = clbPassword.CheckedItems[element].ToString();
+
+                    switch (stringElement)
+                    {
+                        case "Цифры":
+                            password += _random.Next(10).ToString();
+                            break;
+                        case "Прописные буквы":
+                            password += Convert.ToChar(_random.Next(65, 88));
+                            break;
+                        case "Строчные буквы":
+                            password += Convert.ToChar(_random.Next(97, 122));
+                            break;
+                        default:
+                            password += specialChars[_random.Next(specialChars.Length)];
+                            break;
+                    }
+                }
+
+                tbGeneratedPassword.Text = password;
+
+                // скопировать в буфер обмена
+                Clipboard.SetText(password);
+            }
         }
     }
 }
