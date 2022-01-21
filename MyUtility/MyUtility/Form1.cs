@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 using System.Windows.Forms;
 
@@ -197,7 +198,11 @@ namespace MyUtility
 
         private void btnConvert_Click(object sender, EventArgs e)
         {
+            double metricaFrom = metrica[cbFrom.Text];
+            double metricaTo = metrica[cbTo.Text];
 
+            double numberToConvert = Convert.ToDouble(tbFrom.Text);
+            tbTo.Text = (numberToConvert * metricaFrom / metricaTo).ToString(CultureInfo.InvariantCulture);
         }
     }
 }

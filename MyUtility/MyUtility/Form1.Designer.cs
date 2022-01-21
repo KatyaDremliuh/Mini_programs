@@ -215,17 +215,19 @@ namespace MyUtility
             // 
             // tbTo
             // 
+            this.tbTo.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.tbTo.Location = new System.Drawing.Point(609, 187);
             this.tbTo.Name = "tbTo";
             this.tbTo.ReadOnly = true;
-            this.tbTo.Size = new System.Drawing.Size(257, 34);
+            this.tbTo.Size = new System.Drawing.Size(257, 43);
             this.tbTo.TabIndex = 4;
             // 
             // tbFrom
             // 
+            this.tbFrom.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.tbFrom.Location = new System.Drawing.Point(42, 187);
             this.tbFrom.Name = "tbFrom";
-            this.tbFrom.Size = new System.Drawing.Size(257, 34);
+            this.tbFrom.Size = new System.Drawing.Size(257, 43);
             this.tbFrom.TabIndex = 3;
             this.tbFrom.Text = "1";
             // 
@@ -241,15 +243,24 @@ namespace MyUtility
             // 
             // cbTo
             // 
+            this.cbTo.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.cbTo.FormattingEnabled = true;
-            this.cbTo.Location = new System.Drawing.Point(609, 47);
+            this.cbTo.Items.AddRange(new object[] {
+            "mm",
+            "cm",
+            "dm",
+            "m",
+            "km",
+            "mile"});
+            this.cbTo.Location = new System.Drawing.Point(609, 53);
             this.cbTo.Name = "cbTo";
-            this.cbTo.Size = new System.Drawing.Size(257, 36);
+            this.cbTo.Size = new System.Drawing.Size(257, 45);
             this.cbTo.TabIndex = 1;
             this.cbTo.Text = "mm";
             // 
             // cbFrom
             // 
+            this.cbFrom.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.cbFrom.FormattingEnabled = true;
             this.cbFrom.Items.AddRange(new object[] {
             "mm",
@@ -258,9 +269,9 @@ namespace MyUtility
             "m",
             "km",
             "mile"});
-            this.cbFrom.Location = new System.Drawing.Point(42, 47);
+            this.cbFrom.Location = new System.Drawing.Point(42, 53);
             this.cbFrom.Name = "cbFrom";
-            this.cbFrom.Size = new System.Drawing.Size(257, 36);
+            this.cbFrom.Size = new System.Drawing.Size(257, 45);
             this.cbFrom.TabIndex = 0;
             this.cbFrom.Text = "mm";
             // 
