@@ -259,15 +259,8 @@ namespace MyUtility
             {
                 if (!metrica.ContainsKey(names[i]))
                 {
-                    for (int j = i; j < values.Length;)
-                    {
-                        metrica.Add(names[i], values[j]);
-                        break;
-                    }
-                }
-                else
-                {
-                    continue;
+                    metrica.Add(names[i], values[i]);
+                    break;
                 }
             }
         }
