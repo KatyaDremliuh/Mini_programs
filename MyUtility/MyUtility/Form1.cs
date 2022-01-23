@@ -210,7 +210,7 @@ namespace MyUtility
             double metricaTo = metrica[cbTo.Text];
 
             double numberToConvert = Convert.ToDouble(tbFrom.Text);
-            tbTo.Text = (numberToConvert * metricaFrom / metricaTo).ToString(CultureInfo.InvariantCulture);
+            tbTo.Text = (numberToConvert * metricaFrom / metricaTo).ToString("0.###", CultureInfo.InvariantCulture);
         }
 
         private void btnSwap_Click(object sender, EventArgs e)
@@ -240,11 +240,11 @@ namespace MyUtility
 
             FillDictionary(names, values);
 
-            setNamesInCombobox(cbFrom, names);
-            setNamesInCombobox(cbTo, names);
+            SetNamesInCombobox(cbFrom, names);
+            SetNamesInCombobox(cbTo, names);
         }
 
-        private void setNamesInCombobox(ComboBox cbx, string[] names)
+        private void SetNamesInCombobox(ComboBox cbx, string[] names)
         {
             cbx.Items.Clear();
             cbx.Items.AddRange(names);
