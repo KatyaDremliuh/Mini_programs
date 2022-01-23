@@ -42,6 +42,8 @@ namespace MyUtility
             this.tsmiLoad = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.cbMetric = new System.Windows.Forms.ComboBox();
+            this.btnSwap = new System.Windows.Forms.Button();
             this.tbTo = new System.Windows.Forms.TextBox();
             this.tbFrom = new System.Windows.Forms.TextBox();
             this.btnConvert = new System.Windows.Forms.Button();
@@ -202,6 +204,8 @@ namespace MyUtility
             // tabPage5
             // 
             this.tabPage5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.tabPage5.Controls.Add(this.cbMetric);
+            this.tabPage5.Controls.Add(this.btnSwap);
             this.tabPage5.Controls.Add(this.tbTo);
             this.tabPage5.Controls.Add(this.tbFrom);
             this.tabPage5.Controls.Add(this.btnConvert);
@@ -213,10 +217,35 @@ namespace MyUtility
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Конвертер";
             // 
+            // cbMetric
+            // 
+            this.cbMetric.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.cbMetric.FormattingEnabled = true;
+            this.cbMetric.Items.AddRange(new object[] {
+            "Длина",
+            "Вес"});
+            this.cbMetric.Location = new System.Drawing.Point(330, 36);
+            this.cbMetric.Name = "cbMetric";
+            this.cbMetric.Size = new System.Drawing.Size(256, 45);
+            this.cbMetric.TabIndex = 6;
+            this.cbMetric.Text = "Длина";
+            this.cbMetric.SelectedIndexChanged += new System.EventHandler(this.cbMetric_SelectedIndexChanged);
+            // 
+            // btnSwap
+            // 
+            this.btnSwap.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnSwap.Location = new System.Drawing.Point(330, 131);
+            this.btnSwap.Name = "btnSwap";
+            this.btnSwap.Size = new System.Drawing.Size(256, 45);
+            this.btnSwap.TabIndex = 5;
+            this.btnSwap.Text = "<->";
+            this.btnSwap.UseVisualStyleBackColor = true;
+            this.btnSwap.Click += new System.EventHandler(this.btnSwap_Click);
+            // 
             // tbTo
             // 
             this.tbTo.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.tbTo.Location = new System.Drawing.Point(609, 187);
+            this.tbTo.Location = new System.Drawing.Point(614, 265);
             this.tbTo.Name = "tbTo";
             this.tbTo.ReadOnly = true;
             this.tbTo.Size = new System.Drawing.Size(257, 43);
@@ -225,7 +254,7 @@ namespace MyUtility
             // tbFrom
             // 
             this.tbFrom.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.tbFrom.Location = new System.Drawing.Point(42, 187);
+            this.tbFrom.Location = new System.Drawing.Point(47, 265);
             this.tbFrom.Name = "tbFrom";
             this.tbFrom.Size = new System.Drawing.Size(257, 43);
             this.tbFrom.TabIndex = 3;
@@ -233,9 +262,10 @@ namespace MyUtility
             // 
             // btnConvert
             // 
-            this.btnConvert.Location = new System.Drawing.Point(357, 47);
+            this.btnConvert.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnConvert.Location = new System.Drawing.Point(330, 261);
             this.btnConvert.Name = "btnConvert";
-            this.btnConvert.Size = new System.Drawing.Size(201, 51);
+            this.btnConvert.Size = new System.Drawing.Size(256, 51);
             this.btnConvert.TabIndex = 2;
             this.btnConvert.Text = "Конвертировать";
             this.btnConvert.UseVisualStyleBackColor = true;
@@ -252,7 +282,7 @@ namespace MyUtility
             "m",
             "km",
             "mile"});
-            this.cbTo.Location = new System.Drawing.Point(609, 53);
+            this.cbTo.Location = new System.Drawing.Point(614, 131);
             this.cbTo.Name = "cbTo";
             this.cbTo.Size = new System.Drawing.Size(257, 45);
             this.cbTo.TabIndex = 1;
@@ -269,7 +299,7 @@ namespace MyUtility
             "m",
             "km",
             "mile"});
-            this.cbFrom.Location = new System.Drawing.Point(42, 53);
+            this.cbFrom.Location = new System.Drawing.Point(47, 131);
             this.cbFrom.Name = "cbFrom";
             this.cbFrom.Size = new System.Drawing.Size(257, 45);
             this.cbFrom.TabIndex = 0;
@@ -641,6 +671,8 @@ namespace MyUtility
         private System.Windows.Forms.Button btnConvert;
         private System.Windows.Forms.ComboBox cbTo;
         private System.Windows.Forms.ComboBox cbFrom;
+        private System.Windows.Forms.Button btnSwap;
+        private System.Windows.Forms.ComboBox cbMetric;
     }
 }
 

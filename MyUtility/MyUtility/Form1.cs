@@ -204,5 +204,73 @@ namespace MyUtility
             double numberToConvert = Convert.ToDouble(tbFrom.Text);
             tbTo.Text = (numberToConvert * metricaFrom / metricaTo).ToString(CultureInfo.InvariantCulture);
         }
+
+        private void btnSwap_Click(object sender, EventArgs e)
+        {
+            string temp = cbFrom.Text;
+            cbFrom.Text = cbTo.Text;
+            cbTo.Text = temp;
+        }
+
+        private void cbMetric_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cbMetric.Text)
+            {
+                case "Длина":
+                    metrica.Clear();
+                    metrica.Add("mm", Millimetre);
+                    metrica.Add("cm", MillimetresAt1Centimetre);
+                    metrica.Add("dm", DecimetresAt1Centimetre);
+                    metrica.Add("m", MetresAt1Centimetre);
+                    metrica.Add("km", KilometresAt1Centimetre);
+                    metrica.Add("mile", MilesAt1Centimetre);
+
+                    cbFrom.Items.Clear();
+                    cbFrom.Items.Add("mm");
+                    cbFrom.Items.Add("cm");
+                    cbFrom.Items.Add("dm");
+                    cbFrom.Items.Add("m");
+                    cbFrom.Items.Add("km");
+                    cbFrom.Items.Add("mile");
+
+                    cbTo.Items.Clear();
+                    cbTo.Items.Add("mm");
+                    cbTo.Items.Add("cm");
+                    cbTo.Items.Add("dm");
+                    cbTo.Items.Add("m");
+                    cbTo.Items.Add("km");
+                    cbTo.Items.Add("mile");
+
+                    cbFrom.Text = "mm";
+                    cbTo.Text = "mm";
+                    break;
+
+                case "Вес":
+                    metrica.Clear();
+                    metrica.Add("gm", Millimetre);
+                    metrica.Add("kg", MillimetresAt1Centimetre);
+                    metrica.Add("t", DecimetresAt1Centimetre);
+                    metrica.Add("lb", MetresAt1Centimetre); // 453.6
+                    metrica.Add("oz", KilometresAt1Centimetre); // 28.3
+
+                    cbFrom.Items.Clear();
+                    cbFrom.Items.Add("gm");
+                    cbFrom.Items.Add("kg");
+                    cbFrom.Items.Add("t");
+                    cbFrom.Items.Add("lb");
+                    cbFrom.Items.Add("oz");
+
+                    cbTo.Items.Clear();
+                    cbTo.Items.Add("gm");
+                    cbTo.Items.Add("kg");
+                    cbTo.Items.Add("t");
+                    cbTo.Items.Add("lb");
+                    cbTo.Items.Add("oz");
+
+                    cbFrom.Text = "gm";
+                    cbTo.Text = "gm";
+                    break;
+            }
+        }
     }
 }
