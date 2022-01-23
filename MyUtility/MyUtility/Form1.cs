@@ -9,30 +9,38 @@ namespace MyUtility
     public partial class MainForm : Form
     {
         private int _count;
-        private readonly Random random;
-        private readonly char[] _specialChars = new char[] { '%', '*', ')', '#', '$', '^', '&', '~' };
+        private readonly Random _random;
+        private readonly char[] _specialChars = { '%', '*', ')', '#', '$', '^', '&', '~' };
         private Dictionary<string, double> metrica;
 
         private const double Millimetre = 1;
-        private const double MillimetresAt1Centimetre = 10;
-        private const double DecimetresAt1Centimetre = 100;
-        private const double MetresAt1Centimetre = 1000;
-        private const double KilometresAt1Centimetre = 1000000;
-        private const double MilesAt1Centimetre = 1609344;
+        private const double Centimetre = 10;
+        private const double Decimetre = 100;
+        private const double Metre = 1000;
+        private const double Kilometre = 1000000;
+        private const double Mile = 1609344;
+
+        private const double Gramme = 1;
+        private const double Kilogramme = 1000;
+        private const double Tonne = 1000000;
+        private const double Libra = 453.6;
+        private const double Ounce = 28.3;
+
+        private readonly string[] _lengthName = { "mm", "cm", "dm", "m", "km", "mile" };
+        private readonly double[] _lengthValue = { Millimetre, Centimetre, Decimetre, Metre, Kilometre, Mile };
+
+        private readonly string[] _weightName = { "gm", "kg", "t", "lb", "oz" };
+        private readonly double[] _weightValue = { Gramme, Kilogramme, Tonne, Libra, Ounce };
 
         public MainForm()
         {
             InitializeComponent();
 
-            random = new Random();
+            _random = new Random();
 
             metrica = new Dictionary<string, double>();
-            metrica.Add("mm", Millimetre);
-            metrica.Add("cm", MillimetresAt1Centimetre);
-            metrica.Add("dm", DecimetresAt1Centimetre);
-            metrica.Add("m", MetresAt1Centimetre);
-            metrica.Add("km", KilometresAt1Centimetre);
-            metrica.Add("mile", MilesAt1Centimetre);
+
+            FillDictionary(_lengthName, _lengthValue);
         }
 
         private void tsmiExit_Click(object sender, EventArgs e)
@@ -44,8 +52,7 @@ namespace MyUtility
         {
             MessageBox.Show(@"Программа ""Мои утилиты""
 содержит ряд небольших программ,
-которые могут пригодиться в жизни.
-А главное, научить меня
+которые могут научить меня
 основам программирования.", @"О программе");
         }
 
@@ -69,7 +76,7 @@ namespace MyUtility
 
         private void btnRandom_Click(object sender, EventArgs e)
         {
-            int number = random.Next(Convert.ToInt32(numericUpDown1.Value), Convert.ToInt32(numericUpDown2.Value) + 1);
+            int number = _random.Next(Convert.ToInt32(numericUpDown1.Value), Convert.ToInt32(numericUpDown2.Value) + 1);
             lblRandom.Text = number.ToString();
 
             // добавлять сгенерированные числа без повторок
@@ -80,7 +87,7 @@ namespace MyUtility
 
                 while (tbRandom.Text.IndexOf(number.ToString(), StringComparison.Ordinal) != -1)
                 {
-                    number = random.Next(Convert.ToInt32(numericUpDown1.Value), Convert.ToInt32(numericUpDown2.Value) + 1);
+                    number = _random.Next(Convert.ToInt32(numericUpDown1.Value), Convert.ToInt32(numericUpDown2.Value) + 1);
                     i++;
 
                     if (i > 1000)
@@ -154,6 +161,8 @@ namespace MyUtility
             LoadNotepad();
             clbPassword.SetItemChecked(0, true); // при загрузке формы будут выбраны сразу "цифры" для генератора паролей
             clbPassword.SetItemChecked(0, true); // и "прописные буквы"
+
+            cbMetric.Text = cbMetric.Items[0].ToString(); // при загрузке формы будет выбрана сразу "Длина" для конвертера
         }
 
         private void btnCreatePassword_Click(object sender, EventArgs e)
@@ -165,26 +174,26 @@ namespace MyUtility
             }
             else
             {
-                StringBuilder password = new StringBuilder();
+                StringBuilder password = new();
 
                 for (int i = 0; i < nudPasswordLength.Value; i++)
                 {
-                    int element = random.Next(0, clbPassword.CheckedItems.Count);
+                    int element = _random.Next(0, clbPassword.CheckedItems.Count);
                     string stringElement = clbPassword.CheckedItems[element].ToString();
 
                     switch (stringElement)
                     {
                         case "Цифры":
-                            password.Append(random.Next(10).ToString());
+                            password.Append(_random.Next(10).ToString());
                             break;
                         case "Прописные буквы":
-                            password.Append(Convert.ToChar(random.Next(65, 88)));
+                            password.Append(Convert.ToChar(_random.Next(65, 88)));
                             break;
                         case "Строчные буквы":
-                            password.Append(Convert.ToChar(random.Next(97, 122)));
+                            password.Append(Convert.ToChar(_random.Next(97, 122)));
                             break;
                         default:
-                            password.Append(_specialChars[random.Next(_specialChars.Length)]);
+                            password.Append(_specialChars[_random.Next(_specialChars.Length)]);
                             break;
                     }
                 }
@@ -217,59 +226,49 @@ namespace MyUtility
             switch (cbMetric.Text)
             {
                 case "Длина":
-                    metrica.Clear();
-                    metrica.Add("mm", Millimetre);
-                    metrica.Add("cm", MillimetresAt1Centimetre);
-                    metrica.Add("dm", DecimetresAt1Centimetre);
-                    metrica.Add("m", MetresAt1Centimetre);
-                    metrica.Add("km", KilometresAt1Centimetre);
-                    metrica.Add("mile", MilesAt1Centimetre);
-
-                    cbFrom.Items.Clear();
-                    cbFrom.Items.Add("mm");
-                    cbFrom.Items.Add("cm");
-                    cbFrom.Items.Add("dm");
-                    cbFrom.Items.Add("m");
-                    cbFrom.Items.Add("km");
-                    cbFrom.Items.Add("mile");
-
-                    cbTo.Items.Clear();
-                    cbTo.Items.Add("mm");
-                    cbTo.Items.Add("cm");
-                    cbTo.Items.Add("dm");
-                    cbTo.Items.Add("m");
-                    cbTo.Items.Add("km");
-                    cbTo.Items.Add("mile");
-
-                    cbFrom.Text = "mm";
-                    cbTo.Text = "mm";
+                    SetMetrica(_lengthName, _lengthValue);
                     break;
 
                 case "Вес":
-                    metrica.Clear();
-                    metrica.Add("gm", Millimetre);
-                    metrica.Add("kg", MillimetresAt1Centimetre);
-                    metrica.Add("t", DecimetresAt1Centimetre);
-                    metrica.Add("lb", MetresAt1Centimetre); // 453.6
-                    metrica.Add("oz", KilometresAt1Centimetre); // 28.3
-
-                    cbFrom.Items.Clear();
-                    cbFrom.Items.Add("gm");
-                    cbFrom.Items.Add("kg");
-                    cbFrom.Items.Add("t");
-                    cbFrom.Items.Add("lb");
-                    cbFrom.Items.Add("oz");
-
-                    cbTo.Items.Clear();
-                    cbTo.Items.Add("gm");
-                    cbTo.Items.Add("kg");
-                    cbTo.Items.Add("t");
-                    cbTo.Items.Add("lb");
-                    cbTo.Items.Add("oz");
-
-                    cbFrom.Text = "gm";
-                    cbTo.Text = "gm";
+                    SetMetrica(_weightName, _weightValue);
                     break;
+            }
+        }
+
+        private void SetMetrica(string[] names, double[] values)
+        {
+            metrica.Clear();
+
+            FillDictionary(names, values);
+
+            setNamesInCombobox(cbFrom, names);
+            setNamesInCombobox(cbTo, names);
+        }
+
+        private void setNamesInCombobox(ComboBox cbx, string[] names)
+        {
+            cbx.Items.Clear();
+            cbx.Items.AddRange(names);
+
+            cbx.Text = names[0];
+        }
+
+        private void FillDictionary(string[] names, double[] values)
+        {
+            for (int i = 0; i < names.Length; i++)
+            {
+                if (!metrica.ContainsKey(names[i]))
+                {
+                    for (int j = i; j < values.Length;)
+                    {
+                        metrica.Add(names[i], values[j]);
+                        break;
+                    }
+                }
+                else
+                {
+                    continue;
+                }
             }
         }
     }

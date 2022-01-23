@@ -224,7 +224,7 @@ namespace MyUtility
             this.cbMetric.Items.AddRange(new object[] {
             "Длина",
             "Вес"});
-            this.cbMetric.Location = new System.Drawing.Point(330, 36);
+            this.cbMetric.Location = new System.Drawing.Point(330, 23);
             this.cbMetric.Name = "cbMetric";
             this.cbMetric.Size = new System.Drawing.Size(256, 45);
             this.cbMetric.TabIndex = 6;
@@ -234,7 +234,7 @@ namespace MyUtility
             // btnSwap
             // 
             this.btnSwap.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnSwap.Location = new System.Drawing.Point(330, 131);
+            this.btnSwap.Location = new System.Drawing.Point(330, 152);
             this.btnSwap.Name = "btnSwap";
             this.btnSwap.Size = new System.Drawing.Size(256, 45);
             this.btnSwap.TabIndex = 5;
@@ -245,7 +245,7 @@ namespace MyUtility
             // tbTo
             // 
             this.tbTo.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.tbTo.Location = new System.Drawing.Point(614, 265);
+            this.tbTo.Location = new System.Drawing.Point(614, 278);
             this.tbTo.Name = "tbTo";
             this.tbTo.ReadOnly = true;
             this.tbTo.Size = new System.Drawing.Size(257, 43);
@@ -254,7 +254,7 @@ namespace MyUtility
             // tbFrom
             // 
             this.tbFrom.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.tbFrom.Location = new System.Drawing.Point(47, 265);
+            this.tbFrom.Location = new System.Drawing.Point(47, 278);
             this.tbFrom.Name = "tbFrom";
             this.tbFrom.Size = new System.Drawing.Size(257, 43);
             this.tbFrom.TabIndex = 3;
@@ -263,7 +263,7 @@ namespace MyUtility
             // btnConvert
             // 
             this.btnConvert.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnConvert.Location = new System.Drawing.Point(330, 261);
+            this.btnConvert.Location = new System.Drawing.Point(330, 270);
             this.btnConvert.Name = "btnConvert";
             this.btnConvert.Size = new System.Drawing.Size(256, 51);
             this.btnConvert.TabIndex = 2;
@@ -282,7 +282,7 @@ namespace MyUtility
             "m",
             "km",
             "mile"});
-            this.cbTo.Location = new System.Drawing.Point(614, 131);
+            this.cbTo.Location = new System.Drawing.Point(614, 152);
             this.cbTo.Name = "cbTo";
             this.cbTo.Size = new System.Drawing.Size(257, 45);
             this.cbTo.TabIndex = 1;
@@ -299,7 +299,7 @@ namespace MyUtility
             "m",
             "km",
             "mile"});
-            this.cbFrom.Location = new System.Drawing.Point(47, 131);
+            this.cbFrom.Location = new System.Drawing.Point(47, 152);
             this.cbFrom.Name = "cbFrom";
             this.cbFrom.Size = new System.Drawing.Size(257, 45);
             this.cbFrom.TabIndex = 0;
