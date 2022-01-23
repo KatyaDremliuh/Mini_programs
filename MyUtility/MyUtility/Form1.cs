@@ -39,7 +39,6 @@ namespace MyUtility
             _random = new Random();
 
             metrica = new Dictionary<string, double>();
-
             FillDictionary(_lengthName, _lengthValue);
         }
 
@@ -260,7 +259,6 @@ namespace MyUtility
                 if (!metrica.ContainsKey(names[i]))
                 {
                     metrica.Add(names[i], values[i]);
-                    break;
                 }
             }
         }

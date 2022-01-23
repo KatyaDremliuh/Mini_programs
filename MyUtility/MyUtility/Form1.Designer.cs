@@ -29,6 +29,7 @@ namespace MyUtility
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.tsmiFile = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiExit = new System.Windows.Forms.ToolStripMenuItem();
@@ -239,7 +240,7 @@ namespace MyUtility
             this.btnSwap.Font = new System.Drawing.Font("Segoe UI Black", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnSwap.Location = new System.Drawing.Point(342, 149);
             this.btnSwap.Name = "btnSwap";
-            this.btnSwap.Size = new System.Drawing.Size(313, 53);
+            this.btnSwap.Size = new System.Drawing.Size(313, 57);
             this.btnSwap.TabIndex = 5;
             this.btnSwap.Text = "<->";
             this.btnSwap.UseVisualStyleBackColor = true;
@@ -269,6 +270,7 @@ namespace MyUtility
             // 
             this.btnConvert.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.btnConvert.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnConvert.ForeColor = System.Drawing.Color.Green;
             this.btnConvert.Location = new System.Drawing.Point(342, 364);
             this.btnConvert.Name = "btnConvert";
             this.btnConvert.Size = new System.Drawing.Size(313, 80);
@@ -339,11 +341,12 @@ namespace MyUtility
             // btnCreatePassword
             // 
             this.btnCreatePassword.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnCreatePassword.ForeColor = System.Drawing.Color.Green;
             this.btnCreatePassword.Location = new System.Drawing.Point(61, 325);
             this.btnCreatePassword.Name = "btnCreatePassword";
-            this.btnCreatePassword.Size = new System.Drawing.Size(245, 48);
+            this.btnCreatePassword.Size = new System.Drawing.Size(343, 48);
             this.btnCreatePassword.TabIndex = 3;
-            this.btnCreatePassword.Text = "Создать пароль";
+            this.btnCreatePassword.Text = "Сгенерировать пароль";
             this.btnCreatePassword.UseVisualStyleBackColor = true;
             this.btnCreatePassword.Click += new System.EventHandler(this.btnCreatePassword_Click);
             // 
@@ -584,16 +587,18 @@ namespace MyUtility
             // lblRandom
             // 
             this.lblRandom.AutoSize = true;
-            this.lblRandom.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblRandom.Location = new System.Drawing.Point(380, 125);
+            this.lblRandom.Font = new System.Drawing.Font("Segoe UI", 22.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.lblRandom.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblRandom.Location = new System.Drawing.Point(663, 120);
             this.lblRandom.Name = "lblRandom";
-            this.lblRandom.Size = new System.Drawing.Size(33, 38);
+            this.lblRandom.Size = new System.Drawing.Size(43, 50);
             this.lblRandom.TabIndex = 1;
             this.lblRandom.Text = "0";
             // 
             // btnRandom
             // 
             this.btnRandom.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnRandom.ForeColor = System.Drawing.Color.Green;
             this.btnRandom.Location = new System.Drawing.Point(380, 35);
             this.btnRandom.Name = "btnRandom";
             this.btnRandom.Size = new System.Drawing.Size(326, 55);
@@ -612,10 +617,14 @@ namespace MyUtility
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "MainForm";
-            this.Text = "Мои утилиты";
+            this.Text = "Мини-программки";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
