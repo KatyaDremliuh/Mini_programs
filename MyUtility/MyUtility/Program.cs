@@ -15,6 +15,8 @@ namespace MyUtility
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
+            // try solve problem with git
+            // sfsdfsdfewr
         }
     }
 }
